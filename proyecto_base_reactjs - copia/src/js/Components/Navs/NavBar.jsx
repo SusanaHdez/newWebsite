@@ -5,7 +5,7 @@ import { menuLiterals } from "../../Literals/menu";
 //import PropTypes from "prop-types";
 import { routeCodes } from "../../Routes/routesConfig";
 import { NavLink } from "react-router-dom";
-import urlImgLogo from "../../../assets/box.png";
+import urlImgLogo from "../../../assets/reactLogo.png";
 import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
@@ -54,21 +54,17 @@ export default function NavBar(props = {}) {
     const redes = menuLiterals && menuLiterals.redes;
 
     return (
-      <Navbar collapseOnSelect expand="lg">
+      <Navbar bg="primary" data-bs-theme="dark">
         <Container>
-          <Navbar.Brand as={NavLink} to={routeCodes.HOMEPAGE} className={"branding"}>
-            <Image
+          <Navbar.Brand as={NavLink} to={routeCodes.HOMEPAGE}  className={"branding"}><Image
               src={urlImgLogo}
               width="32"
               fluid
               className="d-inline-block align-top"
               alt={name}
-            />FULLBox
-          </Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="mr-auto routes">
-              {
+            />Prueba Web</Navbar.Brand>
+          <Nav className="mr-auto routes">
+          {
                 routes && routes.map((el, index) => {
                   return (
                     <Nav.Link
@@ -82,32 +78,9 @@ export default function NavBar(props = {}) {
                   );
                 })
               }
-            </Nav>
-          </Navbar.Collapse>
-          <Navbar.Collapse className="justify-content-end">
-            <div className={"menu-redes"}>
-              {
-                redes && redes.map((el, index) => {
-                  const redesClass = classnames("menu-redes-icon", el.class);
-
-                  return (
-                    <div
-                      id={"redes" + index}
-                      key={index}
-                      className={"menu-redes-link"}
-                      onClick={() => redirectBlanck(el.url)}
-                    >
-                      <div className={redesClass}>
-                        <FontAwesomeIcon icon={el.icon} />
-                      </div>
-                    </div>
-                  );
-                })
-              }
-            </div>
-          </Navbar.Collapse>
+          </Nav>
         </Container>
-      </Navbar >
+      </Navbar>
     );
   }
 
